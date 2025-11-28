@@ -1,0 +1,56 @@
+/* HERO */
+.faq-hero {
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.faq-hero-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.65);
+}
+
+.faq-hero-content {
+  position: relative;
+  color: white;
+}
+
+/* TABS */
+.faq-tab-btn {
+  padding: 10px 25px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  background: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.faq-tab-btn.active,
+.faq-tab-btn:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* FAQ ITEMS */
+.faq-item {
+  background: #fff;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.faq-toggle {
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}

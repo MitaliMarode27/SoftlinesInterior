@@ -1,0 +1,273 @@
+.walkthrough-container {
+  background: #f9f9fc;
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 70vh;
+  background: linear-gradient(180deg, #c1d3ff, #f3ecff);
+  perspective: 1000px;
+}
+.hero-content {
+  transform: translateZ(60px);
+  animation: floatIn 2s ease-out;
+}
+
+/* Parallax Section */
+.parallax-section {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1616628182501-c2c15c84b07c") center/cover fixed;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parallax-section .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 40, 0.4);
+  backdrop-filter: blur(4px);
+}
+.parallax-section .content-box {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  transform: translateZ(50px);
+  animation: fadeUp 1.8s ease-out;
+}
+
+/* Gallery */
+.gallery-card {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.7s;
+}
+.gallery-card:hover {
+  transform: scale(1.05) rotateY(8deg);
+}
+
+/* Showcase */
+.showcase-card {
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.25);
+  transition: transform 0.7s;
+}
+.showcase-card:hover {
+  transform: rotateY(10deg) scale(1.03);
+}
+.showcase-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.5);
+  color: #fff;
+  padding: 15px;
+  backdrop-filter: blur(4px);
+}
+
+/* Cinematic */
+.cinematic-section {
+  height: 90vh;
+  background: url("https://images.unsplash.com/photo-1616628182501-c2c15c84b07c") center/cover;
+  position: relative;
+}
+.cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.cinematic-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  animation: fadeIn 2s ease-in;
+}
+
+/* Dream Sections */
+.dream-section {
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  width: 100vw;
+  background: #fff;
+  overflow: hidden;
+}
+.dream-section.reverse {
+  flex-direction: row-reverse;
+}
+.dream-img {
+  flex: 1;
+  height: 80%;
+  width: 40vw;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85);
+  transform: scale(1.05);
+  transition: all 1s ease;
+}
+.dream-section:hover .dream-img {
+  transform: scale(1.1) rotateY(5deg);
+}
+.dream-content {
+  flex: 1;
+  padding: 60px;
+  animation: fadeUp 2s ease-out;
+  width: 300px;
+}
+
+/* Footer */
+.footer {
+  background: #101018;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+.cinematic-section {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 70%; /* controls the video width */
+  height: 80%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.15);
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8) saturate(1.2);
+  transform: scale(1.1);
+  transition: transform 3s ease;
+}
+
+.cinematic-section:hover .background-video {
+  transform: scale(1.2);
+}
+
+
+.cinematic-content {
+  position: absolute;
+  z-index: 2;
+}
+
+.cinematic-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.cinematic-content p {
+  font-size: 1.2rem;
+  color: #eee;
+  margin-bottom: 1.5rem;
+}
+
+
+.parallax-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  background: #000;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url("https://images.unsplash.com/photo-1505691938895-1758d7feb511");
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(-100px) scale(1.2);
+  filter: brightness(0.6) saturate(1.2);
+  transition: transform 1s ease, filter 1.2s ease;
+}
+
+.parallax-section:hover .parallax-bg {
+  transform: translateZ(-60px) scale(1.1);
+  filter: brightness(0.9);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.8)
+  );
+  z-index: 1;
+}
+
+.content-box {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+  transform: translateY(0px);
+  transition: transform 0.6s ease, box-shadow 0.8s ease;
+}
+
+.parallax-section:hover .content-box {
+  transform: translateY(-10px);
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.25);
+}
+
+.content-box h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.content-box p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+}

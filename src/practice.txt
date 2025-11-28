@@ -1,0 +1,618 @@
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import "./PortfolioTemplate.css";
+import { NavLink } from "react-router-dom";
+import interiorMainVideo from './Images/interiorMainVideo.mp4';
+import SlideImg2 from "./Images/slideImg2.avif"
+import GardenVideo from './Images/gardenVideo.mp4';
+import project1 from "./Images/projectImg1.jpg";
+import project2 from "./Images/projectImg2.jpg";
+import project3 from "./Images/projectImg3.jpg";
+import project4 from "./Images/projectImg4.jpg";
+import project5 from "./Images/projectImg5.jpg";
+import project6 from "./Images/projectImg6.jpg";
+
+
+/**
+ HomeFullExtended.jsx
+ - Full professional Home page inspired by Livspace (extended)
+ - Hero slider (images + video), partners carousel, services, process,
+   portfolio with modal lightbox, testimonials slider, virtual tour,
+   FAQ, contact, footer, floating CTA.
+ - Replace image/video URLs with client assets for production.
+*/
+
+const BRAND = "Mitali Interiors";
+
+const HERO_SLIDES = [
+   {
+    id: "s1",
+    type: "video",
+    title: "Walkthrough — cinematic preview",
+    subtitle: "Experience the space before it's built (demo).",
+    src: interiorMainVideo, // replace with client demo video
+    cta: "Start walkthrough",
+  },
+  {
+    id: "s2",
+    type: "image",
+    title: "Modern living, thoughtfully designed",
+    subtitle: "Bespoke interiors combining craft, light and material.",
+    src: SlideImg2,
+    cta: "View projects",
+  },
+  {
+    id: "s3",
+    type: "image",
+    title: "Kitchens that invite you in",
+    subtitle: "Functional planning with luxury finishes.",
+    src: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop",
+    cta: "See kitchens",
+  },
+ 
+];
+
+const PARTNER_LIST = ["Havells", "Legrand", "BIRLA", "Kohler", "Philips", "Asian Paints"];
+
+const SERVICES = [
+  {title: "Full Home Design", desc: "Concept to completion — everything covered.", icon: "🛋️"},
+  {title: "Modular Kitchens", desc: "Tailored cabinetry & intelligent layouts.", icon: "🍽️"},
+  {title: "Commercial Fitouts", desc: "Brand-first workplaces and retail spaces.", icon: "🏢"},
+  {title: "3D & Visualization", desc: "High-fidelity renders & walkthroughs.", icon: "🎥"},
+];
+
+const PORTFOLIO = [
+    {
+      id: 1,
+      img: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800&q=80",
+      title: "Modern Living Room",
+      tag: "Residential",
+      desc: "Elegant finishes and soft lighting for cozy homes.",
+    },
+    {
+      id: 2,
+      img: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=80",
+      title: "Corporate Office",
+      tag: "Office",
+      desc: "Contemporary workspace with focus-driven design.",
+    },
+    {
+      id: 3,
+      img: "https://images.unsplash.com/photo-1600607688968-1b1b3c24d2d3?w=800&q=80",
+      title: "Luxury Hotel Lobby",
+      tag: "Hospitality",
+      desc: "Stylish hospitality spaces with material-led finishes.",
+    },
+    {
+      id: 4,
+      img: "https://images.unsplash.com/photo-1598300051311-c7f0e6f1dc23?w=800&q=80",
+      title: "Showroom Interior",
+      tag: "Commercial",
+      desc: "Premium retail experience through thoughtful design.",
+    },
+    {
+      id: 5,
+      img: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80",
+      title: "Cafe Aesthetic",
+      tag: "Hospitality",
+      desc: "Warm tones and wood finishes for relaxed vibes.",
+    },
+    {
+      id: 6,
+      img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80",
+      title: "Villa Project",
+      tag: "Residential",
+      desc: "Modern villa with layered lighting and open design.",
+    },
+  ];
+
+  
+const TESTIMONIALS = [
+  {name:"Radhika K", text:"They made our home calm and beautiful. Execution was precise."},
+  {name:"Amit G", text:"Professional team and transparent deliverables. Strongly recommended."},
+  {name:"Sneha P", text:"Designs that respect our lifestyle — the result is stunning."},
+];
+
+export default function PortfolioTemplate(){
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const [lightbox, setLightbox] = useState({ open: false, idx: 0 });
+  const [testIndex, setTestIndex] = useState(0);
+
+
+  // Hero autoplay
+  useEffect(()=>{
+    if(!autoplay) return;
+    const t = setInterval(()=>{
+      setSlideIndex((s)=> (s+1) % HERO_SLIDES.length);
+    }, 5500);
+    return ()=> clearInterval(t);
+  },[autoplay]);
+
+  // testimonial autoplay
+  useEffect(()=>{
+    const t = setInterval(()=> setTestIndex(s => (s+1)%TESTIMONIALS.length), 6000);
+    return ()=> clearInterval(t);
+  },[]);
+
+  // open lightbox
+  function openLight(idx){
+    setLightbox({open:true, idx});
+    document.body.style.overflow = "hidden";
+  }
+  function closeLight(){
+    setLightbox({open:false, idx:0});
+    document.body.style.overflow = "";
+  }
+
+  return (
+    <div className="hfe-root">
+      {/* NAV */}
+import { NavLink } from "react-router-dom";
+
+<nav className="hfe-nav navbar navbar-expand-lg navbar-light fixed-top">
+  <div className="container">
+    <NavLink className="navbar-brand hfe-brand" to="/">
+      {BRAND}
+    </NavLink>
+
+    <button
+      className="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#hfeNav"
+    >
+      <span className="navbar-toggler-icon"></span>
+    </button>
+
+    <div className="collapse navbar-collapse justify-content-end" id="hfeNav">
+      <ul className="navbar-nav align-items-lg-center">
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+
+        <li className="nav-item dropdown">
+          <a
+            className="nav-link dropdown-toggle"
+            href="#"
+            id="navServices"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            Services
+          </a>
+          <ul className="dropdown-menu" aria-labelledby="navServices">
+            <li>
+              <NavLink className="dropdown-item" to="/#services">
+                Full Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="dropdown-item" to="/portfolio">
+                Projects
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="dropdown-item" to="/#virtual">
+                3D & Walkthroughs
+              </NavLink>
+            </li>
+          </ul>
+        </li>
+
+        <li className="nav-item">
+          <NavLink
+            to="/portfolio"
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            Projects
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            About
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `nav-link ${isActive ? "active" : ""}`
+            }
+          >
+            Contact
+          </NavLink>
+        </li>
+
+        <li className="nav-item ms-3">
+          <button
+            className="btn btn-sm btn-outline-dark"
+            onClick={() =>
+              document
+                .getElementById("contact-form")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Get Quote
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      {/* HERO SLIDER */}
+      <section id="home" className="hfe-hero">
+        <div className="hfe-hero-inner">
+          <AnimatePresence mode="wait">
+            {HERO_SLIDES.map((s, idx)=> idx === slideIndex && (
+              <motion.div key={s.id}
+                initial={{opacity:0}}
+                animate={{opacity:1}}
+                exit={{opacity:0}}
+                transition={{duration:0.8}}
+                className="hfe-hero-slide"
+              >
+                {s.type === "image" ? (
+                  <div className="hfe-hero-media" style={{backgroundImage:`url(${s.src})`}} aria-hidden="true" />
+                ) : (
+                  <video className="hfe-hero-video" src={s.src} autoPlay muted loop playsInline />
+                )}
+
+               <div className="hfe-hero-overlay" />
+
+<div className="hfe-hero-overlay" />
+
+<div
+  className="container hfe-hero-content position-absolute top-50 start-0 translate-middle-y"
+  style={{
+    background: "rgba(255, 255, 255, 0.25)", // soft transparent white
+    backdropFilter: "blur(10px)", // smooth frosted glass
+    padding: "25px 30px",
+    borderRadius: "18px",
+    width: "40%", // wider box
+    marginLeft: "90px", 
+    marginTop:"70px",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
+  }}
+>
+  <motion.h1
+    initial={{ y: 20, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.15 }}
+    className="hfe-hero-title"
+    style={{
+      fontWeight: "700",
+      fontSize: "2rem",
+      textShadow: "0 0 10px rgba(255,255,255,0.6)",
+    }}
+  >
+    {s.title}
+  </motion.h1>
+
+  <motion.p
+    initial={{ y: 20, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ delay: 0.25 }}
+    className="hfe-hero-sub"
+    style={{
+      fontSize: "1rem",
+      marginTop: "12px",
+      fontWeight: "400",
+      lineHeight: "1.7",
+    }}
+  >
+    {s.subtitle}
+  </motion.p>
+
+  <div className="hfe-hero-ctas mt-4">
+    <button
+      className="btn btn-lg"
+      style={{
+       background: "#6D597A", // light frosted box
+       backdropFilter: "blur(12px)",
+       color:"#fff",
+        border: "none",
+        borderRadius: "10px",
+        fontWeight: "600",
+        padding: "12px 36px",
+        transition: "all 0.3s ease",
+        boxShadow: "0 5px 15px rgba(255, 118, 180, 0.4)",
+      }}
+      onClick={() => alert(s.cta)}
+    >
+      {s.cta}
+    </button>
+
+    <button
+      className="btn btn-lg btn-outline-dark ms-3"
+      style={{
+        color: "#1a0033",
+        borderColor: "#1a0033",
+        borderRadius: "10px",
+        padding: "12px 36px",
+        transition: "all 0.3s ease",
+      }}
+      onClick={() => setAutoplay((a) => !a)}
+    >
+      {autoplay ? "Pause" : "Play"}
+    </button>
+  </div>
+</div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+
+
+          {/* hero controls */}
+          <div className="hfe-hero-controls">
+            <div className="dots">
+              {HERO_SLIDES.map((_,i)=>(
+                <button key={i} className={`dot ${i===slideIndex?'active':''}`} onClick={()=> setSlideIndex(i)} aria-label={`Go to slide ${i+1}`} />
+              ))}
+            </div>
+            <div className="arrows">
+              <button className="arrow" onClick={()=> setSlideIndex((s)=> (s-1+HERO_SLIDES.length)%HERO_SLIDES.length)}>&larr;</button>
+              <button className="arrow" onClick={()=> setSlideIndex((s)=> (s+1)%HERO_SLIDES.length)}>&rarr;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS / MARQUEE */}
+      <section className="hfe-partners py-3">
+        <div className="container d-flex align-items-center overflow-hidden">
+          <div className="partner-track" aria-hidden="true">
+            {PARTNER_LIST.concat(PARTNER_LIST).map((p, i)=>(
+              <div className="partner-pill" key={i}>{p}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="hfe-services py-5">
+        <div className="container">
+          <motion.h2 initial={{y:10, opacity:0}} animate={{y:0, opacity:1}} className="section-title">Services we offer</motion.h2>
+          <motion.p initial={{y:10, opacity:0}} animate={{y:0, opacity:1}} transition={{delay:0.08}} className="section-lead">End-to-end solutions across categories — curated to your taste.</motion.p>
+
+          <div className="row mt-4 g-4">
+            {SERVICES.map((s, i)=>(
+              <div className="col-md-6 col-lg-3" key={i}>
+                <motion.div whileHover={{y:-8, boxShadow:"0 20px 50px rgba(72,12,50,0.15)"}} className="service-card glass">
+                  <div className="svc-icon">{s.icon}</div>
+                  <h5 className="svc-title">{s.title}</h5>
+                  <p className="svc-desc">{s.desc}</p>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section id="process" className="hfe-process py-5">
+        <div className="container">
+          <motion.h3 initial={{y:10, opacity:0}} animate={{y:0, opacity:1}} className="section-title">Our process</motion.h3>
+          <div className="process-flow mt-4 d-flex flex-column flex-md-row gap-3">
+            {["Discover","Concept","Design","Deliver"].map((t,i)=>(
+              <motion.div key={t} initial={{opacity:0, y:20}} animate={{opacity:1, y:0}} transition={{delay:0.12+i*0.12}} className="process-step glass">
+                <div className="ps-count">0{i+1}</div>
+                <div className="ps-title">{t}</div>
+                <div className="ps-desc">Brief and deliverable for {t.toLowerCase()}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PORTFOLIO grid */}
+      <section id="projects" className="hfe-portfolio py-5">
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h3 className="section-title">Selected projects</h3>
+            <div><a className="link-muted" href="#projects">View all projects →</a></div>
+          </div>
+
+          <div className="row g-4">
+            {PORTFOLIO.map((p, i)=>(
+              <div className="col-sm-6 col-md-4 col-lg-3" key={p.id}>
+                <motion.div whileHover={{scale:1.03}} className="tile-card" onClick={()=>openLight(i)}>
+                  <img src={p.img} alt={p.title} loading="lazy" />
+                  <div className="tile-meta">
+                    <div className="tile-tag">{p.tag}</div>
+                    <h5 className="tile-title">{p.title}</h5>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section id="testimonials" className="hfe-testimonials py-5">
+        <div className="container">
+          <h3 className="section-title">Client stories</h3>
+          <div className="testimonial-slider mt-4 d-flex gap-3 align-items-stretch">
+            {TESTIMONIALS.map((t, i)=>(
+              <motion.div key={i} initial={{opacity:0, y:10}} animate={{opacity: i===testIndex?1:0.4, y:0}} transition={{duration:0.6}} className={`testimonial-card ${i===testIndex?'active':''}`}>
+                <p className="mb-2">"{t.text}"</p>
+                <footer className="text-muted">— {t.name}</footer>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VIRTUAL / VIDEO SECTION */}
+      <section id="virtual" className="hfe-virtual py-5">
+        <div className="container">
+          <div className="row g-4 align-items-center">
+            <div className="col-md-6">
+              <h3 className="section-title">3D Design & Virtual Tours</h3>
+              <p className="section-lead">Preview spaces in 3D and experience lighting, textures and flow in a walkthrough.</p>
+              <div className="mt-3">
+                <button className="btn btn-outline-dark px-3 py-2" onClick={()=> alert('Open demo')}>Watch demo</button>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="video-card glass">
+                <video src={GardenVideo} controls preload="metadata" style={{width:"100%", borderRadius:10}}/>
+                <div className="video-caption">Short walkthrough (muted preview)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="hfe-cta-banner py-5">
+        <div className="container">
+          <motion.div initial={{scale:0.98, opacity:0}} animate={{scale:1, opacity:1}} className="cta-wrap glass">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+              <div>
+                <h4 className="cta-title">Start your design journey</h4>
+                <p className="mb-0">Book a free consultation — we’ll prepare a tailored plan for your project.</p>
+              </div>
+              <div>
+                <button className="btn btn-lg btn-primary" onClick={()=> document.getElementById('contact-form')?.scrollIntoView({behavior:'smooth'})}>Book free consult</button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="hfe-faq py-5">
+        <div className="container">
+          <h3 className="section-title">Frequently asked questions</h3>
+          <div className="accordion mt-3" id="accFaq">
+            {[
+              {q:"What is the typical timeline?", a:"6-12 weeks for a typical 2BHK end-to-end project."},
+              {q:"Do you provide turnkey fitouts?", a:"Yes — we manage fitout, vendor coordination and QA."},
+              {q:"How is pricing structured?", a:"We provide transparent estimates with milestones and line-item costs."},
+            ].map((f, i)=>(
+              <div className="accordion-item" key={i}>
+                <h2 className="accordion-header" id={`faqH${i}`}>
+                  <button className={`accordion-button ${i>0?'collapsed':''}`} type="button" data-bs-toggle="collapse" data-bs-target={`#faqC${i}`} aria-expanded={i===0}>{f.q}</button>
+                </h2>
+                <div id={`faqC${i}`} className={`accordion-collapse collapse ${i===0?'show':''}`} data-bs-parent="#accFaq">
+                  <div className="accordion-body">{f.a}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact-form" className="hfe-contact py-5">
+        <div className="container">
+          <div className="row g-4">
+            <div className="col-lg-6">
+              <h3 className="section-title">Get in touch</h3>
+              <p className="section-lead">Tell us about your space and we'll get back with a proposal.</p>
+              <form className="contact-form mt-3" onSubmit={(e)=>{e.preventDefault(); alert('Enquiry sent — connect backend later');}}>
+                <div className="mb-3"><input className="form-control" required placeholder="Full name" /></div>
+                <div className="mb-3"><input type="email" className="form-control" required placeholder="Email" /></div>
+                <div className="mb-3"><textarea className="form-control" rows="4" required placeholder="Brief / budget"></textarea></div>
+                <div className="d-flex gap-2">
+                  <button className="btn btn-primary">Send enquiry</button>
+                  <button type="button" className="btn btn-outline" onClick={()=>alert('Call')}>Call us</button>
+                </div>
+              </form>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="contact-sidebar glass p-4">
+                <h5>Mitali Interiors</h5>
+                <p>Nagpur, Maharashtra — India</p>
+                <p>Email: hello@mitali-interiors.example</p>
+                <p>Phone: +91 9xxxxxxxxx</p>
+                <div className="mt-3 socials">
+                  <a href="#">Instagram</a> • <a href="#">Pinterest</a> • <a href="#">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="hfe-footer py-4">
+        <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+          <div>© {new Date().getFullYear()} {BRAND} — Crafted with intent</div>
+          <div className="d-flex gap-3">
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* FLOATING CTA */}
+      <div className="hfe-floating-cta" onClick={()=> document.getElementById('contact-form')?.scrollIntoView({behavior:'smooth'})} role="button" aria-label="Get quote">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      </div>
+
+      {/* LIGHTBOX */}
+      <AnimatePresence>
+        {lightbox.open && (
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className="hfe-lightbox">
+            <div className="lb-backdrop" onClick={closeLight} />
+            <motion.div initial={{y:30, opacity:0}} animate={{y:0, opacity:1}} exit={{y:30, opacity:0}} className="lb-content">
+              <button className="lb-close" onClick={closeLight}>✕</button>
+              <img src={PORTFOLIO[lightbox.idx].img} alt={PORTFOLIO[lightbox.idx].title} />
+              <div className="lb-meta">
+                <h5>{PORTFOLIO[lightbox.idx].title}</h5>
+                <p>{PORTFOLIO[lightbox.idx].desc}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+ <section className="showcase-section text-center py-5" style={{marginTop:"5rem"}}>
+        <h2>Every Corner Feels Alive</h2>
+        <div className="container d-flex justify-content-center flex-wrap gap-4 mt-4">
+          {[
+            "https://images.unsplash.com/photo-1572120360610-d971b9d7767c",
+            "https://images.unsplash.com/photo-1615874959474-d609969a20ed",
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+          ].map((img, i) => (
+            <div key={i} className="showcase-card">
+              <img src={img} alt="Luxury Room" />
+              <div className="card-overlay">
+                <h5>Luxury Room {i + 1}</h5>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
