@@ -1,16 +1,95 @@
-# React + Vite
+🏡 Softlines Interior Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and visually rich Interior Design Website showcasing premium design work, client projects, walkthrough videos, galleries, and services. Built using React, Framer Motion & React Router, the site delivers a clean aesthetic, smooth UI animations, and responsive layout for all devices.
 
-Currently, two official plugins are available:
+🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+(Add link here after deployment)
+🔗 https://softlines-interior.vercel.app/
+ (example link – replace later)
 
-## React Compiler
+✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🎞 Hero Slider with Image + Video Support
 
-## Expanding the ESLint configuration
+🖼 Interior Project Showcase
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎬 Walkthrough cinematic previews
+
+🧭 Smooth Page Routing using react-router-dom
+
+🔥 UI Animations powered by framer-motion
+
+📱 Fully responsive layout (mobile/tablet/desktop)
+
+👥 Client showcase section
+
+📄 Clean component-based architecture
+
+🧠 Tech Stack
+Technology	Purpose
+React JS	UI development
+React Router DOM	Navigation / Routing
+Framer Motion	Page & component animations
+CSS	Styling and responsive layout
+Images / Videos (MP4)	Visual content display
+📁 Project Structure
+src/
+├── Components/
+├── Pages/
+├── Images/
+├── Videos/
+├── App.js
+├── HomePage.jsx
+└── index.js
+
+📌 Screens/Pages Included
+
+🏠 Home Page
+
+🖥 About Page
+
+🗂 Project Showcase / Gallery
+
+🧾 Services
+
+⭐ Client Testimonials
+
+📩 Contact Section
+
+(More expandable in future…)
+
+⚙️ Installation & Run Locally
+git clone https://github.com/MitaliMarode27/SoftlinesInterior.git
+cd SoftlinesInterior
+npm install
+npm start
+
+
+Open in browser at:
+🌍 http://localhost:3000
+
+🧩 Deployment Ready
+
+Can be hosted easily on:
+
+Platform	Status
+Vercel	✔ Recommended
+Netlify	✔
+GitHub Pages	✔
+🔮 Future Improvements
+
+Contact form + backend integration
+
+Admin panel to upload new projects
+
+Dark/Light theme switch
+
+Blog/news design inspirations
+
+👩‍💻 Author
+
+Mitali Marode
+Frontend Developer | React Projects | UI/UX Enthusiast
+
+📬 You can update this area with email or portfolio link later.
